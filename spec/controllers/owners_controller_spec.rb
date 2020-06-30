@@ -85,6 +85,7 @@ describe "Owners Controller" do
      it "edit's the owner's name" do
       visit "/owners/#{@owner.id}/edit"
       fill_in "owner[name]", :with => "Carla Gremillion"
+      ##save_and_open_page
       click_button "Update Owner"
       expect(Owner.last.name).to eq("Carla Gremillion")
     end
