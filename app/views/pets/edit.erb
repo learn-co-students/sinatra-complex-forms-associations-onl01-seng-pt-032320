@@ -1,3 +1,30 @@
-<h1>Update Pet</h1>
-
-
+<div class="card-header">
+	<h1>Create a new Pet</h1>
+</div>
+<div class="card-body">
+	<form action="/pets/<%= @pet.id %>" method="POST">
+		<input id="hidden" type="hidden" name="_method" value="PATCH">
+		<div class="form-group">
+			<label for="pet_name">Name:</label>
+			<input value="<%= @pet.name %>" id="pet_name" type="text" class="form-control" name="pet[name]">
+		</div>
+		<div class="form-group">
+			<h3>Existing Owners:</h3>
+			<% @owners.each do |owner| %>
+			<div class="form-check">
+				<input type="radio" class="form-check-input" name="pet[owner_id]" id="<%= owner.id %>"
+					value="<%= owner.id %>" <%='checked' if @pet.owner == owner %>>
+				<label class="form-check-label" for="<%= owner.id %>">
+					<%= owner.name %>
+				</label>
+			</div>
+			<% end %>
+		</div>
+		<div class="form-group">
+			<h3>New Owner</h3>
+			<label for="owner_name">Owner Name: </label>
+			<input type="text" class="form-control" name="owner[name]" id="owner_name"></input>
+		</div>
+		<input type="submit" class="btn btn-primary" value="Update Pet">
+	</form>
+</div>

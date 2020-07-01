@@ -1,1 +1,24 @@
-index.erb
+<div class="card-header">
+	<div class="row">
+		<div class="col">
+			<h1>Owners</h1>
+		</div>
+		<div class="col"></div>
+		<div class="col">
+			<button type="button" class="btn btn-primary float-right" onclick="location.href='/owners/new'">New</button>
+		</div>
+	</div>
+</div>
+<div class="card-body">
+	<div class="card">
+		<ul class="list-group list-group-flush">
+			<% if !@owners.blank? %>
+			<% for owner in @owners %>
+			<li class="list-group-item">
+				<a href="/owners/<%= owner.id %>"><%= owner.name %></a>
+			</li>
+			<% end %>
+			<% end %>
+		</ul>
+	</div>
+</div>
